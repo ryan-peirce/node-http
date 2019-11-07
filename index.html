@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Node HTTP</title>
+    </head>
+    <body>
+        <h1>Node.js http test app</h1>
+        <p>This is designed to test simple requests in Node.js using only the http module and no other depenpancies or frameworks.</p>
+        <div>
+            <button id="simple">Simple Request</button>
+            <p>This will make a GET request to /simple with ?name=Bob and should return "Hello Bob".
+            </p>
+        </div>
+        <div>
+            <button>Query MongoDB</button>
+            <p>This will make a request and query MongoDB</p>
+        </div>
+        <div>
+            <button>Query MySql</button>
+            <p>This will make a request and query MySql</p>
+        </div>
+        <br>
+        <div>
+            <h3>
+                Response:
+            </h3>
+            <p id="response">N/A</p>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $("#simple").on( "click", function() {
+            $.ajax({
+                type: "GET",
+                url: "/simple",
+                data: {"name": "Bob"},
+                success: function(result){$("#response").html(result)}
+            });
+        });
+    </script>
+</html>
